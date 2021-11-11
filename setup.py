@@ -1,10 +1,10 @@
 from distutils.core import setup
 
 setup(
-    name='hitbctf_client',
+    name='hitb_client',
     version='0.1',
-    description='Python library to develop exploits with the HITBCTF status API',
-    packages=['hitbctf_client'],
+    description='Python library to develop exploits with the HITBCTF  API',
+    packages=['hitb_client'],
     install_requires=[
         'requests',
         'requests-cache',

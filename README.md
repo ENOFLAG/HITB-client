@@ -11,13 +11,13 @@ To enable redis caching setup a redis listening on `localhost:6379` and set the 
 ## Usage example
 The library is not available on pypi.org, instead it can be installed using
 ```
-pip3 install git+https://github.com/ldruschk/saarctf-client.git
+pip3 install git+https://github.com/ENOFLAG/HITB-client.git
 ```
 
 An example program might look as follows:
 ```
 import sys
-from saarctf_client import *
+from hitb_client import *
 
 ip = sys.argv[1]
 assert_online(ip)
