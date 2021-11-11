@@ -22,12 +22,12 @@ ENDPOINT_FLAG_IDS = "/flag_ids"
 
 def send_flags(flags : list, x_team_token : str) -> None:
     headers = {'X-Team-Token' : x_team_token,'Content-Type':'application/json'}
-    response = requests.put(ENDPOINT_URL + ENDPOINT_FLAGS,headers=headers,json=flags) #ToDo Test
+    response = requests.put(ENDPOINT_URL + ENDPOINT_FLAGS,headers=headers,json=flags)
     try:
         data = response.json()
     except JSONDecodeError:
         print(response)
-        data = {}
+        data = {"error" : "decode error"}
     return data
 
 def get_teams() -> None:
