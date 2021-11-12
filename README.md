@@ -15,14 +15,4 @@ pip3 install git+https://github.com/ENOFLAG/HITB-client.git
 ```
 
 An example program might look as follows:
-```
-import sys
-from hitb_client import *
-
-ip = sys.argv[1]
-assert_online(ip)
-
-for round, data in get_flag_ids('service_1', ip).items():
-    # do stuff
-    pass
-```
+ToDo
