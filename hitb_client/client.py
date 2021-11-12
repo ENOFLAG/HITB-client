@@ -1,6 +1,7 @@
 from json.decoder import JSONDecodeError
 import os
-
+from typing import Union, Dict, List 
+TypeJSON = Union[Dict[str, 'JSON'], List['JSON'], int, str, float, bool, Type[None]]
 
 if bool(os.getenv('HITBCTF_CLIENT_CACHE')):
     import requests_cache
@@ -20,7 +21,7 @@ ENDPOINT_TEAMS = "/teams"
 ENDPOINT_SERVICES = "/services"
 ENDPOINT_FLAG_IDS = "/flag_ids"
 
-def send_flags(flags : list, x_team_token : str) -> None:
+def send_flags(flags : list, x_team_token : str) -> TypeJSON:
     headers = {'X-Team-Token' : x_team_token,'Content-Type':'application/json'}
     response = requests.put(ENDPOINT_URL + ENDPOINT_FLAGS,headers=headers,json=flags)
     try:
@@ -30,7 +31,7 @@ def send_flags(flags : list, x_team_token : str) -> None:
         data = {"error" : "decode error"}
     return data
 
-def get_teams() -> None:
+def get_teams() -> TypeJSON:
     response = requests.get(ENDPOINT_URL+ENDPOINT_TEAMS)
     try:
         data = response.json()
@@ -38,7 +39,7 @@ def get_teams() -> None:
         data = {}
     return data
 
-def get_services() -> None:
+def get_services() -> TypeJSON:
     response = requests.get(ENDPOINT_URL+ENDPOINT_SERVICES)
     try:
         data = response.json()
@@ -46,7 +47,7 @@ def get_services() -> None:
         data = {}
     return data
 
-def get_flag_id(service : str, x_team_token) -> None:
+def get_flag_id(service : str, x_team_token) -> TypeJSON:
     headers = {'X-Team-Token' : x_team_token}
     payload = {'service' : service}             
     response = requests.get(ENDPOINT_URL+ENDPOINT_FLAG_IDS,params=payload,headers=headers)
