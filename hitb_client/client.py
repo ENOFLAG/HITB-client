@@ -47,9 +47,9 @@ def get_services() -> JSON:
         data = {}
     return data
 
-def get_flag_id(service : str, x_team_token) -> JSON:
+def get_flag_id(service_id : str, x_team_token) -> JSON:
     headers = {'X-Team-Token' : x_team_token}
-    payload = {'service' : service}             
+    payload = {'service' : service_id}             
     response = requests.get(ENDPOINT_URL+ENDPOINT_FLAG_IDS,params=payload,headers=headers)
     try:
         data = response.json()
